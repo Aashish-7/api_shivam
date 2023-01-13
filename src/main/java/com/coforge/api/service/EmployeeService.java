@@ -153,6 +153,7 @@ public class EmployeeService {
         map.put("team", teamRepository.findById(employee.getTeamId()));
         map.put("role", roleRepository.findById(employee.getRoleId()));
         map.put("officeAddress", officeAddressRepository.findById(employee.getOfficeLocationId()));
+        map.put("getById", employeesRepository.getById(id));
         return map;
     }
 
