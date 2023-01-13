@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/fetchEmployeeByEmployeeId/{id}")
-    public Employee fetchEmployeeByEmployeeId(@PathVariable Long id){
+    public Map<String, Object> fetchEmployeeByEmployeeId(@PathVariable Long id){
         return employeeService.fetchEmployeeByEmployeeId(id);
     }
 

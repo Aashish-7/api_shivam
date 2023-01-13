@@ -7,6 +7,7 @@ import com.coforge.api.exception.BadRequest400Exception;
 import com.coforge.api.exception.dto.Error;
 import com.coforge.api.exception.dto.ResponseStatusDto;
 import com.coforge.api.model.Address;
+import com.coforge.api.model.Department;
 import com.coforge.api.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -142,8 +143,17 @@ public class EmployeeService {
         }
     }
 
-    public Employee fetchEmployeeByEmployeeId(Long id) {
-        return employeesRepository.findByEmployeeId(id);
+    public Map<String, Object> fetchEmployeeByEmployeeId(Long id) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        Employee employee = employeesRepository.findByEmployeeId(id);
+        map.put("employee", employee);
+        map.put("address", addressRepository.findByEmployeeId(employee.getEmployeeId()));
+        map.put("department", departmentRepository.findById(employee.getDepartmentId()));
+        map.put("project", projectRepository.findById(employee.getProjectId()));
+        map.put("team", teamRepository.findById(employee.getTeamId()));
+        map.put("role", roleRepository.findById(employee.getRoleId()));
+        map.put("officeAddress", officeAddressRepository.findById(employee.getOfficeLocationId()));
+        return map;
     }
 
     public List<String> fetchEmployeeByCity() {  // String ki replace me Employee ka complete object se complete aayega nhi to sirf first name hi kia h
