@@ -7,7 +7,6 @@ import com.coforge.api.exception.BadRequest400Exception;
 import com.coforge.api.exception.dto.Error;
 import com.coforge.api.exception.dto.ResponseStatusDto;
 import com.coforge.api.model.Address;
-import com.coforge.api.model.Department;
 import com.coforge.api.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
